@@ -18,7 +18,7 @@
       }
     },
 
-    rows: function() {
+    rows: function() {  //array of arrays (entire Matrix)
       return _(_.range(this.get('n'))).map(function(rowIndex) {
         return this.get(rowIndex);
       }, this);
@@ -95,6 +95,12 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
+    
+      for (var i = 0; i < this.get('n'); i++) {
+        if (this.hasRowConflictAt(i)) {
+          return true;
+        }
+      }
       return false; // fixme
     },
 
@@ -105,6 +111,17 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
+      var total = 0;
+      var nRows = this.get('n');  //returns row at index
+
+      for (var i = 0; i < nRows; i++) {
+        if (this.get(i)[colIndex] === 1) {
+          total++;
+        }
+        if (total > 1) {
+          return true;
+        }
+      }
       return false; // fixme
     },
 
