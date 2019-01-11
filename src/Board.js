@@ -79,6 +79,17 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
+      var total = 0;
+      var rowArr = this.get(rowIndex);
+
+      for (var i = 0; i < rowArr.length; i++) {
+        if (rowArr[i] === 1) {
+          total++;
+        }
+        if (total > 1) {
+          return true;
+        }
+      }
       return false; // fixme
     },
 
