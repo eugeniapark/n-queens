@@ -181,15 +181,26 @@
     hasMinorDiagonalConflictAt: function(col) {
       var total = 0;
       var numRows = this.get('n');
-      for (var i = 0; i < numRows.length; i++) {
-
+      for (var i = 0; i < numRows; i++) {
+        if (this.get(i)[col - i] === 1) {
+          total += 1;
+        }
+        if (total > 1) {
+          return true;
+        }
       }
-
       return false; // fixme
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
+      var numRows = this.get('n');
+
+      for (var i = 0; i < numRows*2; i++) {
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
       return false; // fixme
     }
 
