@@ -16,7 +16,32 @@
 
 
 window.findNRooksSolution = function(n) {
-  var solution = undefined; //fixme
+  var board = new Board({'n': n});
+  board.get(0)[0] = 1;
+  // console.log(board.get(0));
+
+  //if(sum of the row >1, skip the row and the col)
+  
+  var solution = function(col) {
+    // board.get(0)[0] = 1;
+        for (var i = 1; i < n; i++) {
+          if(!hasAnyRooksConflicts()) {
+            
+          }
+      this.get(i)[col];
+    }
+    
+  // } //fixme
+
+  //nxn Board tree
+  //place n in each row
+
+  // solution.hasAnyRooksConflicts()
+  // console.log(Board)
+  // console.log(solution)
+  //  hasAnyRooksConflicts: function() {
+  //     return this.hasAnyRowConflicts() || this.hasAnyColConflicts();
+  //   },
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
