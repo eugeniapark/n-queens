@@ -44,10 +44,10 @@
     hasAnyQueenConflictsOn: function(rowIndex, colIndex) {
       return (
         this.hasRowConflictAt(rowIndex) ||
-        this.hasColConflictAt(colIndex) ||
-        this.hasMajorDiagonalConflictAt(this._getFirstRowColumnIndexForMajorDiagonalOn(rowIndex, colIndex)) ||
-        this.hasMinorDiagonalConflictAt(this._getFirstRowColumnIndexForMinorDiagonalOn(rowIndex, colIndex))
-      );
+        this.hasColConflictAt(colIndex)
+        // this.hasMajorDiagonalConflictAt(this._getFirstRowColumnIndexForMajorDiagonalOn(rowIndex, colIndex)) ||
+        // this.hasMinorDiagonalConflictAt(this._getFirstRowColumnIndexForMinorDiagonalOn(rowIndex, colIndex))
+      )
     },
 
     hasAnyQueensConflicts: function() {
@@ -81,7 +81,8 @@
     hasRowConflictAt: function(rowIndex) {
       var total = 0;
       var rowArr = this.get(rowIndex);
-
+      
+      
       for (var i = 0; i < rowArr.length; i++) {
         if (rowArr[i] === 1) {
           total++;

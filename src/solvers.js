@@ -11,45 +11,30 @@
 // take a look at solversSpec.js to see what the tests are expecting
 
 
-// return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
+// return a matrix (an array of arrays) representing a single nxn chessboard, 
+// with n rooks placed such that none of them can attack each other
 
 
 
 window.findNRooksSolution = function(n) {
-  var board = new Board({'n': n});
-  board.get(0)[0] = 1;
-  // console.log(board.get(0));
-
-  //if(sum of the row >1, skip the row and the col)
-  
-  var solution = function(col) {
-    // board.get(0)[0] = 1;
-        for (var i = 1; i < n; i++) {
-          if(!hasAnyRooksConflicts()) {
-            
-          }
-      this.get(i)[col];
+  var solution = new Board({'n': n});
+  for (var i = 0; i < n; i++) {
+    for (var j = 0; j < n; j++) {
+      solution.togglePiece(i,j);
+      if (solution.hasAnyRooksConflicts()) {
+        solution.togglePiece(i, j);
+      }
     }
-    
-  // } //fixme
-
-  //nxn Board tree
-  //place n in each row
-
-  // solution.hasAnyRooksConflicts()
-  // console.log(Board)
-  // console.log(solution)
-  //  hasAnyRooksConflicts: function() {
-  //     return this.hasAnyRowConflicts() || this.hasAnyColConflicts();
-  //   },
-
-  console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
-  return solution;
+  }  
+  console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution.rows()));
+  return solution.rows();
 };
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
-  var solutionCount = undefined; //fixme
+  var solution = new Board({ 'n': n });
+  var solutionCount = 0; //fixme
+
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
